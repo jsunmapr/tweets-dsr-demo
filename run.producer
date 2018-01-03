@@ -6,6 +6,7 @@ su mapr -c "maprcli table delete -path /tmp/tweets"
 su mapr -c "maprcli table create -path /tmp/tweets -tabletype json"
 
 HOST_IP=`ifconfig -a | grep -A 1 docker0 | grep inet  | awk '{print $2}'`
+CL_NAME=`awk '{print $1}' /opt/mapr/conf/mapr-clusters.conf`
 
 echo "Starting producer..."
 docker run -d -it --name maprc-producer \
@@ -15,7 +16,7 @@ docker run -d -it --name maprc-producer \
 --memory 0 \
 --restart always \
 -e MAPR_CLDB_HOSTS="$HOST_IP" \
--e MAPR_CLUSTER="mapr600" \
+-e MAPR_CLUSTER="$CL_NAME" \
 -e MAPR_PASSWORD="mapr" \
 -e CONSUMER_KEY="HFyLXhB5WL1lMjJnxn7Zue2Nj" \
 -e CONSUMER_SECRET="v76NFYjop94IALUC2Uf9hpLBTs8JhKOHgxDNq9Hg6kQMEmrM6q" \

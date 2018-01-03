@@ -1,0 +1,21 @@
+HOST_IP=`ifconfig -a | grep -A 1 docker0 | grep inet  | awk '{print $2}'`
+CL_NAME=`awk '{print $1}' /opt/mapr/conf/mapr-clusters.conf`
+
+docker run --name dsr -d -it \
+--cap-add SYS_ADMIN --cap-add SYS_RESOURCE --device /dev/fuse --memory 0 \
+-e MAPR_CLUSTER="$CL_NAME" \
+-e MAPR_MOUNT_PATH=/mapr \
+-e MAPR_TZ=UTC \
+-e MAPR_CONTAINER_USER=mapr \
+-e MAPR_CONTAINER_UID=5000 \
+-e MAPR_CONTAINER_GROUP=mapr \
+-e MAPR_CONTAINER_GID=5000 \
+-e MAPR_CONTAINER_PASSWORD=mapr \
+-e MAPR_CLDB_HOSTS="$HOST_IP" \
+-e MAPR_TICKETFILE_LOCATION=/tmp/mapr_ticket \
+-e ZEPPELIN_SSL_PORT=9995 \
+-e HOST_IP="$HOST_IP" \
+-p 9995:9995 -p 20000-20010:20000-20010 \
+-v /tmp/maprticket_5000:/tmp/mapr_ticket:ro \
+-v /sys/fs/cgroup:/sys/fs/cgroup:ro \
+maprtech/data-science-refinery
