@@ -1,0 +1,35 @@
+service mapr-warden stop
+service mapr-zookeeper stop
+yum -y erase mapr\*
+service mapr-installer stop
+yum -y erase mapr-installer
+rm -rf /etc/yum.repos.d/mapr_*.repo
+rm -rf /opt/mapr
+service mariadb stop
+yum -y erase mariadb\*
+rm -rf /var/lib/mysql
+yum-complete-transaction
+yum clean all
+yum makecache
+rm -rf /etc/yum.repos.d/mapr*
+
+sed -i '/mapr0/d' /etc/hosts
+sed -i '/PasswordAuthentication/d' /etc/ssh/sshd_config
+
+echo `ifconfig -a | grep inet | head -1 | awk '{print $2}'` mapr0 >> /etc/hosts
+echo PasswordAuthentication yes >> /etc/ssh/sshd_config
+service sshd restart
+
+hostname mapr0
+
+mkdir -p /root/.ssh
+cp ~centos/.ssh/authorized_keys /root/.ssh
+
+rm -rf mapr-setup.sh
+wget http://package.mapr.com/releases/installer/redhat/mapr-setup.sh
+#sh mapr-setup.sh -r http://package.mapr.com/releases/v6.0.0/redhat/ -y
+sh mapr-setup.sh -y
+
+echo Now:
+echo 1. edit template-converged-600-400.yaml
+echo 2. execute 'go' script
