@@ -1,0 +1,24 @@
+echo "Creating stream and table .."
+su mapr -c "echo mapr | maprlogin password"
+su mapr -c "maprcli stream delete -path /tweets"
+su mapr -c "maprcli stream create -path /tweets"
+su mapr -c "maprcli table delete -path /tmp/tweets"
+su mapr -c "maprcli table create -path /tmp/tweets -tabletype json"
+
+echo "Starting producer..."
+docker run -d -it --name maprc-producer \
+--cap-add SYS_ADMIN \
+--cap-add SYS_RESOURCE \
+--security-opt apparmor:unconfined \
+--memory 0 \
+--restart always \
+-e MAPR_CLDB_HOSTS="172.31.14.23" \
+-e MAPR_CLUSTER="mapr600" \
+-e MAPR_PASSWORD="mapr" \
+-e CONSUMER_KEY="HFyLXhB5WL1lMjJnxn7Zue2Nj" \
+-e CONSUMER_SECRET="v76NFYjop94IALUC2Uf9hpLBTs8JhKOHgxDNq9Hg6kQMEmrM6q" \
+-e ACCESS_TOKEN="22847039-3n2dKLDyQxzeM4zB25aXOMj86Mtz8LqaYzl340aBB" \
+-e ACCESS_SECRET="Kb7QXsppIjZ6wuH7jgsVTPClu4zSVl3J02Xj5vtoEfWKE" \
+-e KEYWORD_FILTER="['trump','korea','mapr','tableau','hadoop','Hortonworks','hortonworks','big data','bigdata','cloudera','data science','data scientiest','business intelligence','mapreduce','data warehouse','data warehousing','mahout','hbase','nosql','newsql','machine learning','businessintelligence','cloudcomputing']" \
+-v /opt/mapr/conf/ssl_truststore:/opt/mapr/conf/ssl_truststore:ro \
+jameshtsun/maprc-producer:latest
