@@ -5,6 +5,8 @@ su mapr -c "maprcli stream create -path /tweets"
 su mapr -c "maprcli table delete -path /tmp/tweets"
 su mapr -c "maprcli table create -path /tmp/tweets -tabletype json"
 
+HOST_IP=`ifconfig -a | grep -A 1 docker0 | grep inet  | awk '{print $2}'`
+
 echo "Starting producer..."
 docker run -d -it --name maprc-producer \
 --cap-add SYS_ADMIN \
@@ -12,7 +14,7 @@ docker run -d -it --name maprc-producer \
 --security-opt apparmor:unconfined \
 --memory 0 \
 --restart always \
--e MAPR_CLDB_HOSTS="172.31.14.23" \
+-e MAPR_CLDB_HOSTS="$HOST_IP" \
 -e MAPR_CLUSTER="mapr600" \
 -e MAPR_PASSWORD="mapr" \
 -e CONSUMER_KEY="HFyLXhB5WL1lMjJnxn7Zue2Nj" \
