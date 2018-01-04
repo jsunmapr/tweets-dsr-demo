@@ -20,7 +20,7 @@ config:
   #DOC MEP version (required only for Mapr 5.2.0 and above)
   mep_version: 4.0.0
   #DOC list of disks to install packages on (required)
-  disks: [/dev/sdc]
+  disks: []
   #DOC disk stripe width (optional)
   #disk_stripe: 3
   #DOC name of the cluster (required)
