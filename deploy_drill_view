@@ -1,0 +1,2 @@
+wget https://raw.githubusercontent.com/jsunmapr/tweets-dsr-demo/master/tweets-view.sql -O /tmp/tweets-view.sql
+su mapr -c 'sqlline -u "jdbc:drill:drillbit=localhost:31010;auth=maprsasl" --run=/tmp/tweets-view.sql'
