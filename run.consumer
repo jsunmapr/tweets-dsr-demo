@@ -12,4 +12,4 @@ docker run -d -it --name maprc-consumer \
 -e MAPR_CLUSTER="$CL_NAME" \
 -e MAPR_PASSWORD="mapr" \
 -v /opt/mapr/conf/ssl_truststore:/opt/mapr/conf/ssl_truststore:ro \
-jameshtsun/maprc-consumer:latest
+maprazure/maprc-consumer:latest

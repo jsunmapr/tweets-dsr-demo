@@ -24,4 +24,4 @@ docker run -d -it --name maprc-producer \
 -e ACCESS_SECRET="Kb7QXsppIjZ6wuH7jgsVTPClu4zSVl3J02Xj5vtoEfWKE" \
 -e KEYWORD_FILTER="['trump','korea','mapr','tableau','hadoop','Hortonworks','hortonworks','big data','bigdata','cloudera','data science','data scientiest','business intelligence','mapreduce','data warehouse','data warehousing','mahout','hbase','nosql','newsql','machine learning','businessintelligence','cloudcomputing']" \
 -v /opt/mapr/conf/ssl_truststore:/opt/mapr/conf/ssl_truststore:ro \
-jameshtsun/maprc-producer:latest
+maprazure/maprc-producer:latest
