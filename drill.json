@@ -1,0 +1,39 @@
+{
+        "group": "drill",
+        "id": "2CX9QKGPF",
+        "interpreterGroup": [
+            {
+                "class": "org.apache.zeppelin.jdbc.JDBCInterpreter",
+                "defaultInterpreter": false,
+                "editor": {
+                    "editOnDblClick": false,
+                    "language": "sql"
+                },
+                "name": "sql"
+            }
+        ],
+        "name": "drill",
+        "option": {
+            "isExistingProcess": false,
+            "isUserImpersonate": false,
+            "perNote": "shared",
+            "perUser": "shared",
+            "port": -1,
+            "remote": true,
+            "setPermission": false,
+            "users": []
+        },
+        "properties": {
+            "ZEPPELIN_DRILL_CLASSPATH": "/opt/mapr/zeppelin/thirdparty/jdbc-mapr-drill/*",
+            "common.max_count": "1000",
+            "default.driver": "com.mapr.drill.jdbc41.Driver",
+            "default.password": "",
+            "default.url": "jdbc:drill:drillbit=172.17.0.1:31010;auth=MAPRSASL",
+            "default.user": "mapr",
+            "zeppelin.jdbc.auth.type": "",
+            "zeppelin.jdbc.concurrent.max_connection": "10",
+            "zeppelin.jdbc.concurrent.use": "true",
+            "zeppelin.jdbc.keytab.location": "",
+            "zeppelin.jdbc.principal": ""
+        }
+}

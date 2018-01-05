@@ -1,0 +1,38 @@
+{
+        "group": "hive",
+        "id": "2CYU3RYTQ",
+        "interpreterGroup": [
+            {
+                "class": "org.apache.zeppelin.jdbc.JDBCInterpreter",
+                "defaultInterpreter": false,
+                "editor": {
+                    "editOnDblClick": false,
+                    "language": "sql"
+                },
+                "name": "sql"
+            }
+        ],
+        "name": "hive",
+        "option": {
+            "isExistingProcess": false,
+            "isUserImpersonate": false,
+            "perNote": "shared",
+            "perUser": "shared",
+            "port": -1,
+            "remote": true,
+            "setPermission": false,
+            "users": []
+        },
+        "properties": {
+            "common.max_count": "1000",
+            "default.driver": "org.apache.hive.jdbc.HiveDriver",
+            "default.password": "",
+            "default.url": "jdbc:hive2://172.17.0.1:10000/default;auth=MAPRSASL",
+            "default.user": "mapr",
+            "zeppelin.jdbc.auth.type": "",
+            "zeppelin.jdbc.concurrent.max_connection": "10",
+            "zeppelin.jdbc.concurrent.use": "true",
+            "zeppelin.jdbc.keytab.location": "",
+            "zeppelin.jdbc.principal": ""
+        }
+}
