@@ -1,4 +1,4 @@
-create or replace view dfs.tmp.tweets-view as select
+create or replace view dfs.tmp.tview as select
 cast(to_timestamp(cast(t.ts as BIGINT)/1000) as timestamp) as `tweet_time`,
 date_part('year',to_timestamp(cast(t.ts as BIGINT)/1000)) as `year`,
 date_part('month',to_timestamp(cast(t.ts as BIGINT)/1000)) as `month`,
