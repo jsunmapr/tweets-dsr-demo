@@ -1,3 +1,5 @@
+import com.mapr.db.spark._
+val tweets=sc.loadFromMapRDB("/tmp/tweets")
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.types.{StructType,StructField,StringType};
 val sqlContext = new org.apache.spark.sql.SQLContext(sc)
