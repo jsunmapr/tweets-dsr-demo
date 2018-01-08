@@ -8,3 +8,4 @@ val df = sqlContext.createDataFrame(tweets.map(tt => tt.text[String] +"\t"+ tt.s
 
 df.registerTempTable("tTBL")
 val results=sqlContext.sql("select screen_name,text from tTBL").show()
+:q
