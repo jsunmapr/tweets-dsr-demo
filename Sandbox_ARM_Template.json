@@ -118,7 +118,7 @@
         },
         "storageProfile": {
           "imageReference": {
-            "id": "https://github.com/jsunmapr/tweets-dsr-demo/blob/master/Sandbox_ARM_Template.json"
+            "id": "/subscriptions/de018edb-82fa-4253-87a5-13f7c79e4e5a/resourceGroups/azuresucks/providers/Microsoft.Compute/images/mapr6_centos7_demo"
           },
           "osDisk": {
             "createOption": "FromImage",
