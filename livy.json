@@ -1,0 +1,85 @@
+{
+        "group": "livy",
+        "id": "2CZFS9WUF",
+        "interpreterGroup": [
+            {
+                "class": "org.apache.zeppelin.livy.LivySparkInterpreter",
+                "defaultInterpreter": true,
+                "editor": {
+                    "editOnDblClick": false,
+                    "language": "scala"
+                },
+                "name": "spark"
+            },
+            {
+                "class": "org.apache.zeppelin.livy.LivySparkSQLInterpreter",
+                "defaultInterpreter": false,
+                "editor": {
+                    "editOnDblClick": false,
+                    "language": "sql"
+                },
+                "name": "sql"
+            },
+            {
+                "class": "org.apache.zeppelin.livy.LivyPySparkInterpreter",
+                "defaultInterpreter": false,
+                "editor": {
+                    "editOnDblClick": false,
+                    "language": "python"
+                },
+                "name": "pyspark"
+            },
+            {
+                "class": "org.apache.zeppelin.livy.LivyPySpark3Interpreter",
+                "defaultInterpreter": false,
+                "editor": {
+                    "editOnDblClick": false,
+                    "language": "python"
+                },
+                "name": "pyspark3"
+            },
+            {
+                "class": "org.apache.zeppelin.livy.LivySparkRInterpreter",
+                "defaultInterpreter": false,
+                "editor": {
+                    "editOnDblClick": false,
+                    "language": "r"
+                },
+                "name": "sparkr"
+            }
+        ],
+        "name": "livy",
+        "option": {
+            "isExistingProcess": false,
+            "isUserImpersonate": false,
+            "perNote": "shared",
+            "perUser": "scoped",
+            "port": -1,
+            "remote": true,
+            "setPermission": false,
+            "users": []
+        },
+        "properties": {
+            "livy.spark.driver.cores": "",
+            "livy.spark.driver.memory": "",
+            "livy.spark.dynamicAllocation.cachedExecutorIdleTimeout": "",
+            "livy.spark.dynamicAllocation.enabled": "",
+            "livy.spark.dynamicAllocation.initialExecutors": "",
+            "livy.spark.dynamicAllocation.maxExecutors": "",
+            "livy.spark.dynamicAllocation.minExecutors": "",
+            "livy.spark.executor.cores": "",
+            "livy.spark.executor.instances": "",
+            "livy.spark.executor.memory": "",
+            "livy.spark.jars.packages": "",
+            "zeppelin.interpreter.localRepo": "/opt/mapr/zeppelin/zeppelin-0.7.2/local-repo/2CZFS9WUF",
+            "zeppelin.interpreter.output.limit": "102400",
+            "zeppelin.livy.concurrentSQL": "false",
+            "zeppelin.livy.displayAppInfo": "false",
+            "zeppelin.livy.keytab": "",
+            "zeppelin.livy.principal": "",
+            "zeppelin.livy.pull_status.interval.millis": "1000",
+            "zeppelin.livy.session.create_timeout": "180",
+            "zeppelin.livy.spark.sql.maxResult": "1000",
+            "zeppelin.livy.url": "http://172.17.0.1:8998"
+        }
+    }
