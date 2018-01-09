@@ -118,7 +118,7 @@
         },
         "storageProfile": {
           "imageReference": {
-            "id": "/subscriptions/de018edb-82fa-4253-87a5-13f7c79e4e5a/resourceGroups/jsunsandbox600/providers/Microsoft.Compute/images/mapr6_centos7_demo"
+            "id": "/subscriptions/de018edb-82fa-4253-87a5-13f7c79e4e5a/resourceGroups/azsucks/providers/Microsoft.Compute/images/mapr6_centos7_sandbox_img"
           },
           "osDisk": {
             "createOption": "FromImage",
