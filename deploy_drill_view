@@ -12,7 +12,7 @@ interpreterID="$(echo -e "${iID}" | sed -e 's/^[[:space:]]*//')"
 
 #curl -b $sessionID -k https://localhost:9995/api/interpreter/setting/${interpreterID} | python -m json.tool > /tmp/drill.json
 
-curl -b $sessionID -k -i -X PUT -H "Content-Type: application/json" -d @drill.json https://localhost:9995/api/interpreter/setting/${interpreterID}
+curl -b $sessionID -k -i -X PUT -H "Content-Type: application/json" -d @/tmp/drill.json https://localhost:9995/api/interpreter/setting/${interpreterID}
 
 #Hive interpreter
 
@@ -21,4 +21,4 @@ iID=`curl -b $sessionID -k https://localhost:9995/api/interpreter/setting | pyth
 
 interpreterID="$(echo -e "${iID}" | sed -e 's/^[[:space:]]*//')"
 
-curl -b $sessionID -k -i -X PUT -H "Content-Type: application/json" -d @hive.json https://localhost:9995/api/interpreter/setting/${interpreterID}
+curl -b $sessionID -k -i -X PUT -H "Content-Type: application/json" -d @/tmp/hive.json https://localhost:9995/api/interpreter/setting/${interpreterID}
