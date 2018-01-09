@@ -118,7 +118,7 @@
         },
         "storageProfile": {
           "imageReference": {
-            "id": "/subscriptions/de018edb-82fa-4253-87a5-13f7c79e4e5a/resourceGroups/jsunsandbox600/providers/Microsoft.Compute/images/mapr6_centos7_demo"
+            "id": "https://github.com/jsunmapr/tweets-dsr-demo/blob/master/Sandbox_ARM_Template.json"
           },
           "osDisk": {
             "createOption": "FromImage",
@@ -152,7 +152,7 @@
           "typeHandlerVersion": "2.0",
           "autoUpgradeMinorVersion": true,
           "protectedSettings": {
-              "commandToExecute": "[concat('sh /root/1-install_mapr', '| tee /tmp/setup.log')]"
+              "commandToExecute": "[concat('sh /opt/local/bin/install_mapr', '| tee /tmp/setup.log')]"
           }
         }
       }]
