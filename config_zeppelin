@@ -19,7 +19,7 @@ interpreterID="$(echo -e "${iID}" | sed -e 's/^[[:space:]]*//')"
 
 curl -b $sessionID -k -i -X PUT -H "Content-Type: application/json" -d @/tmp/drill.json https://localhost:9995/api/interpreter/setting/${interpreterID}
 
-sleep 5
+sleep 2
 #Hive interpreter
 
 sessionID=`curl -i --data 'userName=mapr&password=mapr' -k -X POST https://localhost:9995/api/login | grep HttpOnly | tail -1 | awk -F: '{print $2}' | sed 's/[[:space:]]//g'`
@@ -29,7 +29,7 @@ interpreterID="$(echo -e "${iID}" | sed -e 's/^[[:space:]]*//')"
 
 curl -b $sessionID -k -i -X PUT -H "Content-Type: application/json" -d @/tmp/hive.json https://localhost:9995/api/interpreter/setting/${interpreterID}
 
-sleep 5
+sleep 2 
 #Livy Interpreter
 sessionID=`curl -i --data 'userName=mapr&password=mapr' -k -X POST https://localhost:9995/api/login | grep HttpOnly | tail -1 | awk -F: '{print $2}' | sed 's/[[:space:]]//g'`
 iID=`curl -b $sessionID -k https://localhost:9995/api/interpreter/setting | python -m json.tool |egrep -A 1 "group.*livy" | grep id | awk -F: '{print $2}' | sed 's/,//g' | sed 's/"//g' | sed 's/ +//g'`
@@ -37,3 +37,10 @@ iID=`curl -b $sessionID -k https://localhost:9995/api/interpreter/setting | pyth
 interpreterID="$(echo -e "${iID}" | sed -e 's/^[[:space:]]*//')"
 
 curl -b $sessionID -k -i -X PUT -H "Content-Type: application/json" -d @/tmp/livy.json https://localhost:9995/api/interpreter/setting/${interpreterID}
+
+sleep 2
+
+#Import notebook
+sessionID=`curl -i --data 'userName=mapr&password=mapr' -k -X POST https://localhost:9995/api/login | grep HttpOnly | tail -1 | awk -F: '{print $2}' | sed 's/[[:space:]]//g'`
+wget https://raw.githubusercontent.com/jsunmapr/tweets-dsr-demo/master/tweets.json -O /tmp/tweets.json
+curl -b $sessionID -k -i -X POST -H "Content-Type: application/json" -d @/tmp/tweets.json https://localhost:9995/api/notebook/import
