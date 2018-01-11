@@ -8,6 +8,13 @@ su mapr -c 'sqlline -u "jdbc:drill:drillbit=localhost:31010;auth=maprsasl" --run
 yum -y install mapr-livy
 /opt/mapr/server/configure.sh -R
 
+dsr=`curl -i --data 'userName=mapr&password=mapr' -k -s -X POST https://localhost:9995/api/login | grep OK`
+while [[ -z $dsr ]] 
+  do 
+   dsr=`curl -i --data 'userName=mapr&password=mapr' -k -s -X POST https://localhost:9995/api/login | grep OK` 
+   sleep 1 
+  done 
+
 #Drill interpreter
 
 sessionID=`curl -i --data 'userName=mapr&password=mapr' -k -X POST https://localhost:9995/api/login | grep HttpOnly | tail -1 | awk -F: '{print $2}' | sed 's/[[:space:]]//g'`
