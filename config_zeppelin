@@ -12,7 +12,9 @@ dsr=`curl -i --data 'userName=mapr&password=mapr' -k -s -X POST https://localhos
 while [[ -z $dsr ]] 
   do 
    dsr=`curl -i --data 'userName=mapr&password=mapr' -k -s -X POST https://localhost:9995/api/login | grep OK` 
+   echo "Waiting for Zeppelin to become available.."
    sleep 1 
+   
   done 
 
 #Drill interpreter
