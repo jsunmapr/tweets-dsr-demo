@@ -290,12 +290,6 @@
             { "DeviceName" : "/dev/xvdb", 
               "Ebs" : { "VolumeSize" : {"Ref" : "PersistentStorage"}, "DeleteOnTermination" : "True", "VolumeType" : "gp2" } },
             { "DeviceName" : "/dev/xvdc", 
-              "Ebs" : { "VolumeSize" : {"Ref" : "PersistentStorage"}, "DeleteOnTermination" : "True", "VolumeType" : "gp2" } },
-            { "DeviceName" : "/dev/xvdd", 
-              "Ebs" : { "VolumeSize" : {"Ref" : "PersistentStorage"}, "DeleteOnTermination" : "True", "VolumeType" : "gp2" } },
-            { "DeviceName" : "/dev/xvde", 
-              "Ebs" : { "VolumeSize" : {"Ref" : "PersistentStorage"}, "DeleteOnTermination" : "True", "VolumeType" : "gp2" } },
-            { "DeviceName" : "/dev/xvdf", 
               "Ebs" : { "VolumeSize" : {"Ref" : "PersistentStorage"}, "DeleteOnTermination" : "True", "VolumeType" : "gp2" } }
           ]]},
           "ImageId"        : { "Fn::FindInMap" : [ "AWSRegionVindex2AMI", { "Ref" : "AWS::Region" },
