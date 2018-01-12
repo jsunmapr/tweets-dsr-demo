@@ -6,6 +6,8 @@ su mapr -c 'sqlline -u "jdbc:drill:drillbit=localhost:31010;auth=maprsasl" --run
 
 #Install Livy
 yum -y install mapr-livy
+sleep 10
+
 /opt/mapr/server/configure.sh -R
 
 dsr=`curl -i --data 'userName=mapr&password=mapr' -k -s -X POST https://localhost:9995/api/login | grep OK`
