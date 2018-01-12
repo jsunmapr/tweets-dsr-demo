@@ -104,6 +104,11 @@
       "type": "Microsoft.Compute/virtualMachines",
       "name": "[variables('maprvmName')]",
       "location": "[resourceGroup().location]",
+      "plan": {
+            "name": "60-sandbox",
+            "publisher": "mapr-technologies",
+            "product": "mapr60-sandbox-preview"
+      },
       "dependsOn": [
         "[resourceId('Microsoft.Network/networkInterfaces', concat(variables('maprnicName')))]"
       ],
