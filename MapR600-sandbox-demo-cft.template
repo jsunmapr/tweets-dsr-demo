@@ -248,7 +248,7 @@
         "DependsOn" : "ClusterNodes",
         "Properties" : {
            "Handle"  : { "Ref" : "ClusterCompleteHandle" },
-           "Timeout" : "1500",
+           "Timeout" : "3000",
            "Count"   : "1"
         }
     },
