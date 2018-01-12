@@ -107,7 +107,7 @@
       "plan": {
             "name": "60-sandbox",
             "publisher": "mapr-technologies",
-            "product": "mapr60-sandbox-preview"
+            "product": "mapr60-sandbox"
       },
       "dependsOn": [
         "[resourceId('Microsoft.Network/networkInterfaces', concat(variables('maprnicName')))]"
@@ -124,7 +124,7 @@
         "storageProfile": {
           "imageReference": {
             "publisher": "mapr-technologies",
-            "offer": "mapr60-sandbox-preview",
+            "offer": "mapr60-sandbox",
             "sku": "60-sandbox",
             "version": "latest"
           },
