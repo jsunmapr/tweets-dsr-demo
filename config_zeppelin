@@ -6,9 +6,6 @@ su mapr -c 'sqlline -u "jdbc:drill:drillbit=localhost:31010;auth=maprsasl" --run
 
 #Install Livy
 yum -y install mapr-livy
-sleep 10
-
-/opt/mapr/server/configure.sh -R
 
 dsr=`curl -i --data 'userName=mapr&password=mapr' -k -s -X POST https://localhost:9995/api/login | grep OK`
 while [[ -z $dsr ]] 
@@ -16,8 +13,17 @@ while [[ -z $dsr ]]
    dsr=`curl -i --data 'userName=mapr&password=mapr' -k -s -X POST https://localhost:9995/api/login | grep OK` 
    echo "Waiting for Zeppelin to become available.."
    sleep 1 
-   
   done 
+
+configure=`ps -ef | grep configure.sh | grep -v grep`
+while [[ ! -z $configure ]]
+ do
+  configure=`ps -ef | grep configure.sh | grep -v grep`
+  echo "Waiting for older configure.sh to finish..."
+  sleep 1
+ done
+
+/opt/mapr/server/configure.sh -R
 
 #Drill interpreter
 
