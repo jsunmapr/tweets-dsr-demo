@@ -253,6 +253,21 @@
         }
     },
 
+    "ZeppelinWaitHandle" : {
+        "Type" : "AWS::CloudFormation::WaitConditionHandle"
+    },
+
+    "ZeppelinWaitCondition" : {
+        "Type" : "AWS::CloudFormation::WaitCondition",
+        "Condition" : "EnableWaitConditions",
+        "DependsOn" : "ClusterCompleteCondition",
+        "Properties" : {
+           "Handle"  : { "Ref" : "ZeppelinWaitHandle" },
+           "Timeout" : "120",
+           "Count"   : "1"
+        }
+    },
+
     "ClusterNodes" : {
       "Type" : "AWS::AutoScaling::AutoScalingGroup",
       "Properties" : {
@@ -316,9 +331,6 @@
               "sh /root/3-start_dsr \n", 
               "sleep 5 \n",
               "sh /root/4-config_zeppelin \n", 
-              "#echo region ", {"Ref": "AWS::Region"}, ">> /tmp/aws\n",
-              "#echo stack_name ", {"Ref":"AWS::StackName"}, ">> /tmp/aws\n",
-              "echo clustercompletehandle ", { "Ref" : "ClusterCompleteHandle" }, ">> /tmp/aws\n",
               "## Tag the instance (now that we're sure of launch index\n",
               "instance_id=$(curl -f http://169.254.169.254/latest/meta-data/instance-id)\n",
               "if [ -n \"$instance_id\" ] ; then\n",
@@ -341,10 +353,23 @@
               "--stack-name ", {"Ref":"AWS::StackName"}, " --logical-resource-id ClusterCompleteCondition ", 
               "--query StackResources[].ResourceStatus --output text )\n",
               "done\n",
+              "\n",
+              "## Signal back information for outputs \n",
+              "wget https://raw.githubusercontent.com/jsunmapr/tweets-dsr-demo/master/post_aws_zeppelin.sh -O /tmp/post_aws_zeppelin.sh \n",
+              "sh /tmp/post_aws_zeppelin.sh '", { "Ref" : "ZeppelinWaitHandle" }, "'\n",
               "\n"
             ]]}
           }
         }
       }
     },
+    "Outputs" : {
+        "ZeppelinClusterAccess":
+        {
+            "Condition" : "EnableWaitConditions",
+            "Description": "Zeppelin UI",
+            "Value": { "Fn::GetAtt" : [ "ZeppelinWaitCondition" , "Data"] }
+        }
+    }
 }
+
