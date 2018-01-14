@@ -6,13 +6,37 @@
       "type": "string",
       "defaultValue": "osadmin",
       "metadata": {
-        "artifactsBaseUrl": "Operating System account user name"
+        "description": "Operating System account user name"
       }
     },
     "adminPassword": {
       "type": "securestring",
       "metadata": {
-        "artifactsBaseUrl": "Operating System account password"
+        "description": "Operating System admin account password"
+      }
+    },
+    "twitterConsumerKey": {
+      "type": "string",
+      "metadata": {
+        "description": "Twitter Consumer Key, visit https://apps.twitter.com/ to obtain one"
+      }
+    },
+    "twitterConsumerSecret": {
+      "type": "string",
+      "metadata": {
+        "description": "Twitter Consumer Secret, visit https://apps.twitter.com/ to obtain one"
+      }
+    },
+    "twitterAccessToken": {
+      "type": "string",
+      "metadata": {
+        "description": "Twitter Access Token, visit https://apps.twitter.com/ to obtain one"
+      }
+    },
+    "twitterAccessSecret": {
+      "type": "string",
+      "metadata": {
+        "description": "Twitter Access Secret, visit https://apps.twitter.com/ to obtain one"
       }
     }
   },
@@ -34,6 +58,7 @@
     "subnetRef": "[concat(variables('virtualNetworkId'), '/subnets/', variables('subnetName'))]",
     "subnetPrefix": "10.0.0.0/24",
     "ipAddress": "10.0.0.4",
+    "uniqueString": "[substring(uniqueString(resourceGroup().id),0,8)]",
     "diskArray": [{
         "diskSizeGB": "[variables('diskSize')]",
         "lun": 0,
@@ -48,7 +73,10 @@
       "name": "[variables('publicIPAddressName')]",
       "location": "[resourceGroup().location]",
       "properties": {
-        "publicIPAllocationMethod": "dynamic"
+        "publicIPAllocationMethod": "dynamic",
+        "dnsSettings": {
+              "domainNameLabel": "[concat(variables('maprvmName'), '-', variables('uniqueString') )]"
+        }
       }
     },
   {
@@ -160,10 +188,29 @@
           "typeHandlerVersion": "2.0",
           "autoUpgradeMinorVersion": true,
           "protectedSettings": {
-              "commandToExecute": "[concat('sh /opt/local/bin/install_mapr', '| tee /tmp/setup.log')]"
+               "commandToExecute": "[concat('echo ', parameters('twitterConsumerKey'), '>> /tmp/consumer_key',';','echo ', parameters('twitterConsumerSecret'), '>> /tmp/consumer_secret',';','echo ', parameters('twitterAccessToken'), '>> /tmp/access_token',';','echo ', parameters('twitterAccessSecret'), '>> /tmp/access_secret ',';','/opt/local/bin/install_mapr | tee /tmp/setup.log',';','sleep 10',';','sh /root/1-start_producer',';','sh /root/2-start_consumer',';','sh /root/3-start_dsr',';','sh /root/4-config_zeppelin')]"
           }
         }
       }]
     }
-  ]
+  ],
+    "outputs": {
+      "OS SSH Admin User Name": {
+         "type": "string",
+        "value": "[parameters('adminUserName')]"
+      },
+      "Zeppelin UI": {
+        "type": "string",
+        "value": "[concat('https://',variables('maprvmName'),'-',variables('uniqueString'),'.',resourceGroup().location,'.cloudapp.azure.com:9995')]"
+      },
+      "Zeppelin UI User Name": {
+        "type": "string",
+        "value": "['mapr']"
+      },
+      "Zeppelin UI User Password": {
+        "type": "string",
+        "value": "['mapr']"
+      }
+    }
 }
+
