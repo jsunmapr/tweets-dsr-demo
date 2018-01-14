@@ -48,9 +48,15 @@ MAPR_HOME=${MAPR_HOME:-/opt/mapr}
 CFN_SIGNAL=/opt/aws/bin/cfn-signal
 
 	exec_and_log  $CFN_SIGNAL -e 0  -r "Stack_Info" \
-		-i "Zeppelin UI" -d "https://${public_ip}:9995" "$HANDLE_URL"
+		-i "Zeppelin_UI" -d "https://${public_ip}:9995" "$HANDLE_URL"
 
 	exec_and_log  $CFN_SIGNAL -e 0  -r "Stack_Info" \
-		-i "SSH User" -d "centos" "$HANDLE_URL"
+		-i "Zeppelin_UI_USER" -d "mapr" "$HANDLE_URL"
+
+	exec_and_log  $CFN_SIGNAL -e 0  -r "Stack_Info" \
+		-i "Zeppelin_UI_PASSWORD" -d "mapr" "$HANDLE_URL"
+
+	exec_and_log  $CFN_SIGNAL -e 0  -r "Stack_Info" \
+		-i "OS_SSH_USER" -d "centos" "$HANDLE_URL"
 
 
