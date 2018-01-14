@@ -1,3 +1,4 @@
+echo "Configuring Zeppelin..."
 wget https://raw.githubusercontent.com/jsunmapr/tweets-dsr-demo/master/tweets-view.sql -O /tmp/tweets-view.sql
 wget https://raw.githubusercontent.com/jsunmapr/tweets-dsr-demo/master/drill.json -O /tmp/drill.json
 wget https://raw.githubusercontent.com/jsunmapr/tweets-dsr-demo/master/hive.json -O /tmp/hive.json

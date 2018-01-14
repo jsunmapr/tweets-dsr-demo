@@ -1,6 +1,7 @@
 HOST_IP=`ifconfig -a | grep -A 1 docker0 | grep inet  | awk '{print $2}'`
 CL_NAME=`awk '{print $1}' /opt/mapr/conf/mapr-clusters.conf`
 
+echo "Starting Data Science Refinery..."
 docker run --name dsr -d -it \
 --cap-add SYS_ADMIN --cap-add SYS_RESOURCE --device /dev/fuse --memory 0 \
 -e MAPR_CLUSTER="$CL_NAME" \
