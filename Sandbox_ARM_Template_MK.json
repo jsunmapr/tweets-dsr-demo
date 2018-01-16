@@ -203,11 +203,15 @@
         "type": "string",
         "value": "[concat('https://',variables('maprvmName'),'-',variables('uniqueString'),'.',resourceGroup().location,'.cloudapp.azure.com:9995')]"
       },
-      "Zeppelin UI User Name": {
+      "MCS UI": {
+        "type": "string",
+        "value": "[concat('https://',variables('maprvmName'),'-',variables('uniqueString'),'.',resourceGroup().location,'.cloudapp.azure.com:8443')]"
+      },
+      "UI User Name": {
         "type": "string",
         "value": "['mapr']"
       },
-      "Zeppelin UI User Password": {
+      "UI User Password": {
         "type": "string",
         "value": "['mapr']"
       }
