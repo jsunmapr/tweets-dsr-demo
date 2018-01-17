@@ -51,7 +51,7 @@ CFN_SIGNAL=/opt/aws/bin/cfn-signal
 		-i "Zeppelin_UI" -d "https://${public_ip}:9995" "$HANDLE_URL"
 
 	exec_and_log  $CFN_SIGNAL -e 0  -r "Stack_Info" \
-		-i "MCS_UI" -d "https://${public_ip}:9443" "$HANDLE_URL"
+		-i "MCS_UI" -d "https://${public_ip}:8443" "$HANDLE_URL"
 
 	exec_and_log  $CFN_SIGNAL -e 0  -r "Stack_Info" \
 		-i "UI_USER" -d "mapr" "$HANDLE_URL"
