@@ -390,7 +390,7 @@
         "MapRAccessInfo":
         {
             "Condition" : "EnableWaitConditions",
-            "Description": "Zeppelin UI",
+            "Description": "Various MapR UI Access Information",
             "Value": { "Fn::GetAtt" : [ "ZeppelinWaitCondition" , "Data"] }
         }
     }
