@@ -54,6 +54,9 @@ CFN_SIGNAL=/opt/aws/bin/cfn-signal
 		-i "MCS_UI" -d "https://${public_ip}:8443" "$HANDLE_URL"
 
 	exec_and_log  $CFN_SIGNAL -e 0  -r "Stack_Info" \
+		-i "DRILL_UI" -d "https://${public_ip}:8047" "$HANDLE_URL"
+
+	exec_and_log  $CFN_SIGNAL -e 0  -r "Stack_Info" \
 		-i "UI_USER" -d "mapr" "$HANDLE_URL"
 
 	exec_and_log  $CFN_SIGNAL -e 0  -r "Stack_Info" \
