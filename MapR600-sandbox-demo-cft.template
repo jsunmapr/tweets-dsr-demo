@@ -387,7 +387,7 @@
       }
     },
     "Outputs" : {
-        "ZeppelinClusterAccess":
+        "MapRAccessInfo":
         {
             "Condition" : "EnableWaitConditions",
             "Description": "Zeppelin UI",
