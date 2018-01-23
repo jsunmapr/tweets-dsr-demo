@@ -97,9 +97,7 @@
 
         "AWSRegionVindex2AMI" : {
           "us-east-2"      : { "600" : "ami-5082a835" },
-          "us-west-2"      : { "600" : "ami-efd46297" },
-          "eu-central-1"   : { "600" : "ami-c89508a7" },
-          "ap-southeast-2" : { "600" : "ami-ba718cd8" }
+          "us-west-2"      : { "600" : "ami-2b4df153" }
         },
 
         "SubnetConfig" : 
