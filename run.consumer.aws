@@ -1,0 +1,15 @@
+HOST_IP=`ifconfig -a | grep -A 1 docker0 | grep inet  | awk '{print $2}'`
+CL_NAME=`awk '{print $1}' /opt/mapr/conf/mapr-clusters.conf`
+
+echo "Starting consumer..."
+docker run -d -it --name maprc-consumer \
+--cap-add SYS_ADMIN \
+--cap-add SYS_RESOURCE \
+--security-opt apparmor:unconfined \
+--memory 0 \
+--restart always \
+-e MAPR_CLDB_HOSTS="$HOST_IP" \
+-e MAPR_CLUSTER="$CL_NAME" \
+-e MAPR_PASSWORD="mapr" \
+-v /opt/mapr/conf/ssl_truststore:/opt/mapr/conf/ssl_truststore:ro \
+maprpartners/maprc-consumer:latest
