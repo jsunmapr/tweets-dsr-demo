@@ -188,7 +188,7 @@
           "typeHandlerVersion": "2.0",
           "autoUpgradeMinorVersion": true,
           "protectedSettings": {
-               "commandToExecute": "[concat('echo ', parameters('twitterConsumerKey'), '>> /tmp/consumer_key',';','echo ', parameters('twitterConsumerSecret'), '>> /tmp/consumer_secret',';','echo ', parameters('twitterAccessToken'), '>> /tmp/access_token',';','echo ', parameters('twitterAccessSecret'), '>> /tmp/access_secret ',';','/opt/local/bin/install_mapr | tee /tmp/setup.log',';','sleep 10',';','sh /root/1-start_producer',';','sh /root/2-start_consumer',';','sh /root/3-start_dsr',';','sh /root/4-config_zeppelin')]"
+               "commandToExecute": "[concat('echo ', parameters('twitterConsumerKey'), '> /tmp/consumer_key',';','echo ', parameters('twitterConsumerSecret'), '> /tmp/consumer_secret',';','echo ', parameters('twitterAccessToken'), '> /tmp/access_token',';','echo ', parameters('twitterAccessSecret'), '> /tmp/access_secret ',';','/opt/local/bin/install_mapr | tee /tmp/setup.log',';','sleep 10',';','sh /root/1-start_producer',';','sh /root/2-start_consumer',';','sh /root/3-start_dsr',';','sh /root/4-config_zeppelin')]"
           }
         }
       }]
