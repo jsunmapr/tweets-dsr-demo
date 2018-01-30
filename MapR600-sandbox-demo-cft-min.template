@@ -252,21 +252,6 @@
         }
     },
 
-    "ZeppelinWaitHandle" : {
-        "Type" : "AWS::CloudFormation::WaitConditionHandle"
-    },
-
-    "ZeppelinWaitCondition" : {
-        "Type" : "AWS::CloudFormation::WaitCondition",
-        "Condition" : "EnableWaitConditions",
-        "DependsOn" : "ClusterCompleteCondition",
-        "Properties" : {
-           "Handle"  : { "Ref" : "ZeppelinWaitHandle" },
-           "Timeout" : "120",
-           "Count"   : "1"
-        }
-    },
-
     "ClusterNodes" : {
       "Type" : "AWS::AutoScaling::AutoScalingGroup",
       "Properties" : {
