@@ -14,12 +14,6 @@
       "metadata": {
         "description": "Operating System admin account password"
       }
-    },
-    "twitterConsumerKey": {
-      "type": "string",
-      "metadata": {
-        "description": "Twitter Consumer Key, visit https://apps.twitter.com/ to obtain one"
-      }
     }
   },
   "variables": {
