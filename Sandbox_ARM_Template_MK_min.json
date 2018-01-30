@@ -20,24 +20,6 @@
       "metadata": {
         "description": "Twitter Consumer Key, visit https://apps.twitter.com/ to obtain one"
       }
-    },
-    "twitterConsumerSecret": {
-      "type": "string",
-      "metadata": {
-        "description": "Twitter Consumer Secret, visit https://apps.twitter.com/ to obtain one"
-      }
-    },
-    "twitterAccessToken": {
-      "type": "string",
-      "metadata": {
-        "description": "Twitter Access Token, visit https://apps.twitter.com/ to obtain one"
-      }
-    },
-    "twitterAccessSecret": {
-      "type": "string",
-      "metadata": {
-        "description": "Twitter Access Secret, visit https://apps.twitter.com/ to obtain one"
-      }
     }
   },
   "variables": {
