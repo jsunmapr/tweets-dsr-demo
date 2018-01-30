@@ -174,26 +174,6 @@
       "OS SSH Admin User Name": {
          "type": "string",
         "value": "[parameters('adminUserName')]"
-      },
-      "Zeppelin UI": {
-        "type": "string",
-        "value": "[concat('https://',variables('maprvmName'),'-',variables('uniqueString'),'.',resourceGroup().location,'.cloudapp.azure.com:9995')]"
-      },
-      "MCS UI": {
-        "type": "string",
-        "value": "[concat('https://',variables('maprvmName'),'-',variables('uniqueString'),'.',resourceGroup().location,'.cloudapp.azure.com:8443')]"
-      },
-      "DRILL UI": {
-        "type": "string",
-        "value": "[concat('https://',variables('maprvmName'),'-',variables('uniqueString'),'.',resourceGroup().location,'.cloudapp.azure.com:8047')]"
-      },
-      "UI User Name": {
-        "type": "string",
-        "value": "['mapr']"
-      },
-      "UI User Password": {
-        "type": "string",
-        "value": "['mapr']"
       }
     }
 }
