@@ -4,26 +4,6 @@
     "Description" : "CloudFormation template to create a sandbox MapR cluster with data science refinery demo",
 
     "Parameters" : {
-       "TwitterConsumerKey" : {
-           "Type" : "String",
-           "Description" : "Twitter Consumer Key, visit https://apps.twitter.com/ to obtain one."
-        },
-
-       "TwitterConsumerSecret" : {
-           "Type" : "String",
-           "Description" : "Twitter Consumer Secret, visit https://apps.twitter.com/ to obtain one."
-        },
-
-       "TwitterAccessToken" : {
-           "Type" : "String",
-           "Description" : "Twitter Access Token, visit https://apps.twitter.com/ to obtain one."
-        },
-
-       "TwitterAccessSecret" : {
-           "Type" : "String",
-           "Description" : "Twitter Access Secret, visit https://apps.twitter.com/ to obtain one."
-        },
-  
        "ClusterNodeType" : {
            "Type" : "String",
            "Default" : "m4.4xlarge",
