@@ -24,7 +24,7 @@ config:
   #DOC disk stripe width (optional)
   #disk_stripe: 3
   #DOC name of the cluster (required)
-  cluster_name: mapr600
+  cluster_name: mapr601
   #DOC hashmap of services to be installed (optional)
   services:
     template-05-converged:
